@@ -1,0 +1,41 @@
+[package]
+name = "example_project_structure"
+version = "0.1.0"
+edition = "2021"
+description = "Example structure of a Rust project"
+authors = ["Bob Peters <contact@rust-trends.com>"]
+homepage = "https://rust-trends.com"
+repository = "https://github.com/Rust-Trends/example_project_structure"
+license = "GNU GPLv3"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+
+# Where the library is located, by default that is lib.rs
+# and the name can be used in the rest of your project
+[lib]
+name = "mylib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "emulator"
+src = "src/bin/emulator.rs"
+
+
+# Sometimes there is a need to have dependencies for tests (or examples, or benchmarks) only. 
+# Such dependencies are added to Cargo.toml in the [dev-dependencies] section. These 
+# dependencies are not propagated to other packages which depend on this package.
+[dev-dependencies]
+criterion = "0.3" # criterion is used for benchmarks
+
+[[bench]]
+name = "simple_bench"
+harness = false
+
+[[bench]]
+name = "multi-file-bench"
+harness = false
+
+
